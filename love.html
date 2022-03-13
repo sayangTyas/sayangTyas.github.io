@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aku sayang tyas</title>
+    <style>
+        body {
+            text-align: center;
+            background: #002242;
+            color: darkgoldenrod;
+            font-size: 1.2em;
+        }
+
+        h1, h2 {
+            text-decoration: underline wheat;
+        }
+
+        #love {
+            color: white;
+            text-decoration: underline red;
+            font-size: 1.5em;
+            }
+    </style>
+</head>
+
+<body>
+
+    <h1>Ibu, Bapak</h1>
+    <h2>Saya sayang Tyas</h2>
+
+    <button onclick="displayLove()">Sebarkan cinta</button>
+
+    <p id="love"></p>
+
+    <img src="./2022_0308_13574400.jpg" width="300" height="200" alt="">
+    <img src="./2022_0308_14005400.jpg" width="300" height="200" alt="">
+    <img src="./2022_0308_14000300.jpg" width="300" height="200" alt="">
+
+
+    <script>
+        function displayLove() {
+            var love = document.getElementById('love');
+
+            love.textContent = 'Bolehkah saya menikah dengan tyas ?';
+        }
+    </script>
+</body>
+
+</html>
