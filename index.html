@@ -96,7 +96,7 @@
             var weather_img = document.getElementById("weather-img");
             var weather_txt = document.getElementById("weather-txt");
 
-            axios.get('http://api.weatherapi.com/v1/current.json?key=ef4db585e7e34438b51114145221303&q=Purwokerto&aqi=no')
+            axios.get('https://api.weatherapi.com/v1/current.json?key=ef4db585e7e34438b51114145221303&q=Purwokerto&aqi=no')
                 .then((response) => {
                     console.log(response);
                     weather_img.src = response.data.current.condition.icon;
