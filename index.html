@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aku sayang tyas</title>
+    <title>Mathieu sayang tyas</title>
     <style>
         body {
             text-align: center;
@@ -14,7 +14,8 @@
             font-size: 1.2em;
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             text-decoration: underline wheat;
         }
 
@@ -22,30 +23,90 @@
             color: white;
             text-decoration: underline red;
             font-size: 1.5em;
-            }
+        }
+
+        #choice{
+            display: none;
+        }
+
+        #weather-txt {
+            color: white;
+            text-decoration: underline red;
+        }
     </style>
 </head>
 
 <body>
 
-    <h1>Ibu, Bapak</h1>
-    <h2>Saya sayang Tyas</h2>
+    <header>
+        <h1>Ibu, Bapak</h1>
+        <h2>Mathieu sayang Tyas</h2>
+    </header>
 
-    <button onclick="displayLove()">Sebarkan cinta</button>
+    <article>
+        <button onclick="displayLove()">Sebarkan cinta</button>
 
-    <p id="love"></p>
+        <p id="love"></p>
 
-    <img src="./2022_0308_13574400.jpg" width="300" height="200" alt="">
-    <img src="./2022_0308_14005400.jpg" width="300" height="200" alt="">
-    <img src="./2022_0308_14000300.jpg" width="300" height="200" alt="">
+        <div id="choice">
+            <div>
+                <button onclick="ya()">Ya</button>
+                <button onclick="tidak()">Tidak</button>
+            </div>
+            <p id="result"></p>
+        </div>
+
+        <img src="./2022_0308_13574400.jpg" width="300" height="200" alt="">
+        <img src="./2022_0308_14005400.jpg" width="300" height="200" alt="">
+        <img src="./2022_0308_14000300.jpg" width="300" height="200" alt="">
 
 
+    </article>
+
+    <div id="actual-condition">
+        <h3>Cuaca di Purwokerto</h3>
+        <img id="weather-img">
+        <p id="weather-txt"></p>
+    </div>
+
+    <footer>© Cute copyright</footer>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         function displayLove() {
             var love = document.getElementById('love');
+            var choice = document.getElementById('choice');
 
             love.textContent = 'Bolehkah saya menikah dengan tyas ?';
+
+            choice.style.display = "inline";
         }
+
+        function ya() {
+            var result = document.getElementById('result');
+            result.textContent = "Terima kasih banyak Bapak !" 
+        }
+
+        function tidak() {
+            var result = document.getElementById('result');
+            result.textContent = "Bagus.. Saya jalan makan mie goreng.." 
+        }
+
+        function weather() {
+            var weather_img = document.getElementById("weather-img");
+            var weather_txt = document.getElementById("weather-txt");
+
+            axios.get('http://api.weatherapi.com/v1/current.json?key=ef4db585e7e34438b51114145221303&q=Purwokerto&aqi=no')
+                .then((response) => {
+                    console.log(response);
+                    weather_img.src = response.data.current.condition.icon;
+                    weather_txt.textContent = response.data.current.condition.text;
+                }).catch((error) => {
+                    console.log(error);
+                })
+        }
+
+        weather();
     </script>
 </body>
 
